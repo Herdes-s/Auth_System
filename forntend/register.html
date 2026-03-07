@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <span id="toast"></span>
+    <div class="container">
+      <h1>Registrar</h1>
+
+      <input id="registerName" placeholder="Nome" />
+      <input id="registerEmail" placeholder="Email" />
+      <input id="registerPassword" type="password" placeholder="Senha" />
+
+      <button onclick="register()">Criar conta</button>
+
+      <div class="link">
+        <a href="index.html">Voltar para login</a>
+      </div>
+
+      <pre id="response"></pre>
+
+    </div>
+
+    
+    <script src="script.js"></script>
+  </body>
+</html>
