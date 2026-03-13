@@ -19,17 +19,18 @@ async function register() {
     body: JSON.stringify({ name, email, password }),
   });
 
-  const data = await res.json();
+  const data = await res.json().catch(() => ({}));;
 
-  if (data.message) {
-    showToast("Conta criada com sucesso", "sucesso");
-
-    window.location.href = "index.html";
-  } else {
-    showToast(data.error, "error");
+  if (!res.ok) {
+    showToast(data.error || "Error ao registrar", "error");
+    return;
   }
 
-  show(data);
+  showToast(data.message || "Conta criada com sucesso", "success");
+
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 1500);
 }
 
 async function login() {
@@ -57,9 +58,8 @@ async function login() {
     window.location.href = "dashboard.html";
   } else {
     showToast(data.error || "Erro no login!", "error");
+    return;
   }
-
-  show(data);
 }
 
 async function getProfile() {
@@ -76,7 +76,6 @@ async function getProfile() {
   });
 
   const data = await res.json();
-  show(data);
 }
 
 function logout() {
@@ -84,17 +83,17 @@ function logout() {
   window.location.href = "index.html";
 }
 
-function showToast(message, type) {
+function showToast(message, type = "success") {
   const toast = document.getElementById("toast");
 
   toast.textContent = message;
 
   toast.className = "";
 
-  if (type === "success") {
-    toast.classList.add("toast-success");
-  } else {
+  if (type === "error") {
     toast.classList.add("toast-error");
+  } else {
+    toast.classList.add("toast-success");
   }
 
   toast.classList.add("show");

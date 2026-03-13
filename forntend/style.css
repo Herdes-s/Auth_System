@@ -71,6 +71,6 @@ background:#28a745;
 background:#dc3545;
 }
 
-.show{
+#toast.show{
 opacity:1;
 }
