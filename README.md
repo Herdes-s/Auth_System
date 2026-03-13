@@ -124,7 +124,7 @@ Authorization: Bearer TOKEN
 ### 1️⃣ Clonar o repositório
 
 
-git clone https://github.com/seuusuario/login-project
+git clone https://github.com/Herdes-s/Auth_System
 
 
 ---
